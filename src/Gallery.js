@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import Card from "./components/Card";
 
 class Gallery extends Component {
@@ -61,7 +62,9 @@ class Gallery extends Component {
                     onChange={ev => this.setState({keyword: ev.target.value})}
                 />
                 <div className="row">
-                    {this.state.items.map((item, index) => (
+                    {this.state.items.filter(item =>
+                        item.judul.toLowerCase().includes(this.state.keyword.toLowerCase())
+                    ).map((item, index) => (
                         <Card key={index}
                               judul={item.judul}
                               penulis={item.penulis}
@@ -72,6 +75,9 @@ class Gallery extends Component {
                         />
                     ))}
                 </div>
+                <Link to="/cart" className="btn btn-primary mt-3">
+                    Go to Cart
+                </Link>
             </div>
         );
     }

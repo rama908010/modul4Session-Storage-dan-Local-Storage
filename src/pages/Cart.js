@@ -32,6 +32,11 @@ class Cart extends Component {
     this.initCart();
   }
 
+  handleCheckout = () => {
+    // Add your checkout logic here
+    alert("Proceeding to checkout!");
+  }
+
   render() {
     return (
       <div className="container">
@@ -68,6 +73,9 @@ class Cart extends Component {
             <h4 className="text-danger">
               Total Harga: Rp {this.state.total}
             </h4>
+            <button className="btn btn-success mt-3" onClick={this.handleCheckout}>
+              Checkout
+            </button>
           </div>
         </div>
       </div>
